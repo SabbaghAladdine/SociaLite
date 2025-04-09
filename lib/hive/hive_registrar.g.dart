@@ -3,10 +3,12 @@
 // Check in to version control
 
 import 'package:hive_ce/hive.dart';
-import 'package:social_lite/hive/hive_adapters.dart';
+import 'package:social_lite/models/appuser.dart';
+import 'package:social_lite/models/post.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
+    registerAdapter(PostAdapter());
     registerAdapter(UserAdapter());
   }
 }

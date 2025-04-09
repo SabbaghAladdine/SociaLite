@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (isLogin) {
         await loginProvider.login(username, password);
         Get.snackbar(duration: const Duration(seconds: 1),'Success', 'Logged in successfully');
-        Get.offAll(const HomeScreen());
+        Get.offAll(()=> const HomeScreen());
       } else {
         await loginProvider.signUp(username, password);  // Changed email to username
         Get.snackbar('Success', 'Account created successfully');

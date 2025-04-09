@@ -4,6 +4,7 @@ import 'package:hive_ce_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:social_lite/hive/hive_registrar.g.dart';
 import 'package:social_lite/screens/loginScreen.dart';
+import 'package:social_lite/services/feedProvider.dart';
 import 'package:social_lite/services/loginProvider.dart';
 
 Future<void> main() async {
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
-      ChangeNotifierProvider(create: (_)=> LoginProvider())
+      ChangeNotifierProvider(create: (_)=> LoginProvider()),
+      ChangeNotifierProvider(create: (_)=> FeedProvider())
     ],
     child: const GetMaterialApp(
         home: LoginScreen(),
