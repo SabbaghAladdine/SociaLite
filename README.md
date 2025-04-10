@@ -38,5 +38,3 @@ this is the message format that needs to be sent in the /group request
 <img src="https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/chatRoom.jpg" width="200" title="Chat Screenshot" alt="Chat Screenshot"/>
 
 <img src="https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/settings.jpg" width="200" title="Settings Screenshot" alt="Settings Screenshot"/>
-
-![Settings Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/settings.jpg)
