@@ -16,21 +16,21 @@ class ChatProvider extends GetConnect with ChangeNotifier {
 
   void connectSocket() {
     if(!isConnected){
-    _stompClient = StompClient(
-      config: StompConfig(
-        url: 'ws://${ApiIp.apiIp}/ws',
-        onConnect: _onStompConnected,
-        onWebSocketError: (err) => debugPrint("STOMP error: $err"),
-        onDisconnect: (_) => debugPrint("STOMP disconnected"),
-        onStompError: (frame) => debugPrint("STOMP error: ${frame.body}"),
-        beforeConnect: () async {
-          debugPrint('Connecting to WebSocket...');
-          await Future.delayed(const Duration(milliseconds: 500));
-        },
-      ),
-    );
+      _stompClient = StompClient(
+        config: StompConfig(
+          url: 'ws://${ApiIp.apiIp}/ws',
+          onConnect: _onStompConnected,
+          onWebSocketError: (err) => debugPrint("STOMP error: $err"),
+          onDisconnect: (_) => debugPrint("STOMP disconnected"),
+          onStompError: (frame) => debugPrint("STOMP error: ${frame.body}"),
+          beforeConnect: () async {
+            debugPrint('Connecting to WebSocket...');
+            await Future.delayed(const Duration(milliseconds: 500));
+          },
+        ),
+      );
 
-    _stompClient!.activate();
+      _stompClient!.activate();
     }else{
       debugPrint("socket already connected");
     }
@@ -55,11 +55,10 @@ class ChatProvider extends GetConnect with ChangeNotifier {
 
   Future<void> sendMessage(Message message) async {
     _stompClient?.send(
-    destination: '/app/chat',
-    body: json.encode(message.toJson()),
-  );
+      destination: '/app/chat',
+      body: json.encode(message.toJson()),
+    );
     notifyListeners();
-    await saveMessage(message);
   }
 
   Future<void> saveMessage(Message m) async {
@@ -76,6 +75,7 @@ class ChatProvider extends GetConnect with ChangeNotifier {
 
   void disconnectSocket() {
     _stompClient?.deactivate();
+    isConnected = false;
     _stompClient = null;
   }
 }

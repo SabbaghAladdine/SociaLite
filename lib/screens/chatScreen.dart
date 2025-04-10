@@ -21,9 +21,8 @@ class _ChatScreenState extends State<ChatScreen> {
     super.initState();
     Future.microtask(() {
       final chatProvider = Provider.of<ChatProvider>(context, listen: false);
-      debugPrint("chatpro");
-      chatProvider.loadMessages();
-      chatProvider.connectSocket();
+      chatProvider.loadMessages().whenComplete(()=>chatProvider.connectSocket());
+      ;
     });
   }
 
@@ -31,7 +30,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
 
     final chatProvider = Provider.of<ChatProvider>(context, listen: true);
-    final loginProvider = Provider.of<LoginProvider>(context, listen: false);
+    final loginProvider = Provider.of<LoginProvider>(context, listen: true);
     User? user = loginProvider.currentUser;
 
     void sendMessage() {

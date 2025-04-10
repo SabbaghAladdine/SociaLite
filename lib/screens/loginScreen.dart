@@ -52,6 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
           key: _formKey,
           child: Column(
             children: [
+              const Image(width:150,image: AssetImage("lib/assets/socialliteIcon.png")),
               TextFormField(
                 decoration: const InputDecoration(labelText: 'Username'),  // Changed Email to Username
                 onSaved: (val) => username = val!,

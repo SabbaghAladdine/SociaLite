@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:social_lite/screens/chatScreen.dart';
 import 'package:social_lite/screens/settingsScreen.dart';
+import 'package:social_lite/services/chatProvider.dart';
 import 'package:social_lite/services/feedProvider.dart';
 
 import '../widgets/postContainer.dart';
@@ -39,14 +40,14 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: GestureDetector(
-              onTap: ()=>{Get.to(const ChatScreen())},
+              onTap: ()=>{Get.to(const ChatScreen())?.whenComplete(()=>context.read<ChatProvider>().disconnectSocket())},
               child: const Icon(Icons.chat_bubble,size: 30,),
             ),
           ),
           Padding(
             padding:  const EdgeInsets.symmetric(horizontal: 20),
             child: GestureDetector(
-              onTap: ()=>{Get.to( SettingsScreen())},
+              onTap: ()=>{Get.to( const SettingsScreen())},
               child: const Icon(Icons.settings,size: 30,),
             ),
           )

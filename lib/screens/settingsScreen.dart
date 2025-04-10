@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hive_ce/hive.dart';
 import 'package:provider/provider.dart';
+import 'package:social_lite/models/appSettings.dart';
 import 'package:social_lite/screens/loginScreen.dart';
 import 'package:social_lite/services/chatProvider.dart';
 import 'package:social_lite/services/loginProvider.dart';
@@ -39,10 +41,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (user != null) {
       user.username = _usernameController.text;
       user.password = _passwordController.text;
-      user.save();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Profile updated')),
-      );
+      user.save().whenComplete((){
+        Get.snackbar("success", "User Profile Updated");
+        loginProvider.updateCurrentUser(user);
+        _usernameController.clear();
+        _passwordController.clear();
+      });
     }
   }
 
@@ -88,9 +92,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               icon: Icon(Get.isDarkMode
                   ? Icons.brightness_7 // Sun icon for light mode
                   : Icons.brightness_3), // Moon icon for dark mode
-              onPressed: () {
-                Get.changeTheme(Get.isDarkMode? ThemeData.light(): ThemeData.dark());
-              },
+              onPressed: changeTheme,
             ),
           ),
           ElevatedButton(
@@ -104,11 +106,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
+  Future<void> changeTheme() async {
+    final box = await Hive.openBox<Settings>('settings');
+    bool useDark = !Get.isDarkMode;
+    Get.changeTheme(useDark ? ThemeData.dark() : ThemeData.light());
+    await box.put('theme', Settings(darkTheme: useDark));
+    debugPrint('Theme saved: ${box.get('theme')?.darkTheme}');
+  }
+
   void logout(BuildContext context) {
     final loginProvider = Provider.of<LoginProvider>(context, listen: false);
     final chatProvider = Provider.of<ChatProvider>(context, listen: false);
     loginProvider.logout();
     chatProvider.disconnectSocket();
-    Get.to(()=> const LoginScreen());
+    Get.offAll(()=> const LoginScreen());
   }
 }

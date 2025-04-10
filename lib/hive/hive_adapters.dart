@@ -1,4 +1,5 @@
 import 'package:hive_ce/hive.dart';
+import 'package:social_lite/models/appSettings.dart';
 import 'package:social_lite/models/appuser.dart';
 import 'package:social_lite/models/message.dart';
 import 'package:social_lite/models/post.dart';
@@ -8,7 +9,8 @@ part 'hive_adapters.g.dart';
 @GenerateAdapters([
   AdapterSpec<User>(),
   AdapterSpec<Post>(),
-  AdapterSpec<Message>()
+  AdapterSpec<Message>(),
+  AdapterSpec<Settings>()
 ])
 
 class HiveAdapters {}
