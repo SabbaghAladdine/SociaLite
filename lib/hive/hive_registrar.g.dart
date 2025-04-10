@@ -5,10 +5,13 @@
 import 'package:hive_ce/hive.dart';
 import 'package:social_lite/models/appuser.dart';
 import 'package:social_lite/models/post.dart';
+import 'package:social_lite/models/message.dart';
+
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
     registerAdapter(PostAdapter());
     registerAdapter(UserAdapter());
+    registerAdapter(MessageAdapter());
   }
 }

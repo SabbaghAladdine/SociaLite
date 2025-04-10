@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding:  const EdgeInsets.symmetric(horizontal: 20),
             child: GestureDetector(
-              onTap: ()=>{Get.to(const SettingsScreen())},
+              onTap: ()=>{Get.to( SettingsScreen())},
               child: const Icon(Icons.settings,size: 30,),
             ),
           )

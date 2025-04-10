@@ -1,19 +1,114 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:social_lite/screens/loginScreen.dart';
+import 'package:social_lite/services/chatProvider.dart';
+import 'package:social_lite/services/loginProvider.dart';
+import 'package:get/get.dart';
 
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+class SettingsScreen extends StatefulWidget {
+ const SettingsScreen({super.key});
+
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  late TextEditingController _usernameController;
+  late TextEditingController _passwordController;
+  bool _expanded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    final user = Provider.of<LoginProvider>(context, listen: false).currentUser;
+    _usernameController = TextEditingController(text: user?.username ?? '');
+    _passwordController = TextEditingController(text: user?.password ?? '');
+  }
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _saveChanges() {
+    final loginProvider = Provider.of<LoginProvider>(context, listen: false);
+    var user = loginProvider.currentUser;
+    if (user != null) {
+      user.username = _usernameController.text;
+      user.password = _passwordController.text;
+      user.save();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Profile updated')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Empty Screen'),
+        title: const Text('Settings'),
       ),
-      body: const Center(
-        child: Text('This is an empty screen'),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          ExpansionTile(
+            title: const Text('Edit Profile'),
+            initiallyExpanded: _expanded,
+            onExpansionChanged: (value) {
+              setState(() {
+                _expanded = value;
+              });
+            },
+            children: [
+              TextField(
+                controller: _usernameController,
+                decoration: const InputDecoration(labelText: 'Username'),
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                controller: _passwordController,
+                decoration: const InputDecoration(labelText: 'Password'),
+                obscureText: true,
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _saveChanges,
+                child: const Text('Save Changes'),
+              ),
+
+            ],
+          ),
+          ListTile(
+            title: const Text("Change Theme"),
+            trailing: IconButton(
+              icon: Icon(Get.isDarkMode
+                  ? Icons.brightness_7 // Sun icon for light mode
+                  : Icons.brightness_3), // Moon icon for dark mode
+              onPressed: () {
+                Get.changeTheme(Get.isDarkMode? ThemeData.light(): ThemeData.dark());
+              },
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              logout(context);
+            },
+            child: const Text('Logout'),
+          ),
+        ],
       ),
     );
+  }
+
+  void logout(BuildContext context) {
+    final loginProvider = Provider.of<LoginProvider>(context, listen: false);
+    final chatProvider = Provider.of<ChatProvider>(context, listen: false);
+    loginProvider.logout();
+    chatProvider.disconnectSocket();
+    Get.to(()=> const LoginScreen());
   }
 }

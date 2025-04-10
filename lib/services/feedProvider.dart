@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_ce/hive.dart';
+import 'package:social_lite/commons/apiIp.dart';
 
 import '../models/post.dart';
 
@@ -22,7 +23,7 @@ class FeedProvider extends GetConnect with ChangeNotifier {
 
   Future<void> getPosts() async {
     var box = await Hive.openBox<Post>('post');
-    get('http://192.168.1.15:8080/get').then((response) async => {
+    get('http://${ApiIp.apiIp}/get').then((response) async => {
           _posts = parsePosts(response.body),
           for (var post in _posts!) {await box.add(post)},
           notifyListeners()
