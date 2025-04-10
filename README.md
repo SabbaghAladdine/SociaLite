@@ -29,12 +29,14 @@ Swagger Link: localhost:8080/swagger-ui/index.html
 this is the message format that needs to be sent in the /group request 
 {   "content": "hello world",   "sender": "user123",   "time": "2025-04-09T15:30:00.000Z" }
 
-<img src="https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/feed.jpg" width="200" title="Login Screenshot" alt="Login Screenshot"/>
+<img src="https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/login.jpg" width="200" title="Login Screenshot" alt="Login Screenshot"/>
 
-![Feed Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/feed.jpg)
+<img src="https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/feed.jpg" width="200" title="Feed Screenshot" alt="Feed Screenshot"/>
 
-![Post Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/Post.jpg)
+<img src="https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/Post.jpg" width="200" title="Post Screenshot" alt="Post Screenshot"/>
 
-![Chat Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/chatRoom.jpg)
+<img src="https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/chatRoom.jpg" width="200" title="Chat Screenshot" alt="Chat Screenshot"/>
+
+<img src="https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/settings.jpg" width="200" title="Settings Screenshot" alt="Settings Screenshot"/>
 
 ![Settings Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/settings.jpg)
