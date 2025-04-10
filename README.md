@@ -16,7 +16,7 @@ and a Jar file of the api will be in this repository root.
 remember to change the api Ip address in the apiIp.dart file in the commons directory.
 ## Screenshots
 
-![API Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/swagger.png | width=200)
+![API Screenshot](https://github.com/SabbaghAladdine/SociaLite/blob/main/ScreenShots/swagger.png)
 
 the api contains two requests that you can access using swagger
 
@@ -29,12 +29,12 @@ Swagger Link: localhost:8080/swagger-ui/index.html
 this is the message format that needs to be sent in the /group request 
 {   "content": "hello world",   "sender": "user123",   "time": "2025-04-09T15:30:00.000Z" }
 
-![Login Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/login.jpg | width=200)
+<img src="https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/feed.jpg" width="200" title="Login Screenshot" alt="Login Screenshot"/>
 
-![Feed Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/feed.jpg | width=200)
+![Feed Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/feed.jpg)
 
-![Post Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/Post.jpg | width=200)
+![Post Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/Post.jpg)
 
-![Chat Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/chatRoom.jpg | width=200) 
+![Chat Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/chatRoom.jpg)
 
-![Settings Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/settings.jpg | width=200)
+![Settings Screenshot](https://raw.githubusercontent.com/SabbaghAladdine/SociaLite/refs/heads/main/ScreenShots/settings.jpg)
