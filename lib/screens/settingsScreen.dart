@@ -19,6 +19,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   late TextEditingController _usernameController;
   late TextEditingController _passwordController;
   bool _expanded = false;
+  var isDarkMode = Get.isDarkMode.obs;
 
   @override
   void initState() {

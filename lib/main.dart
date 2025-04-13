@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:social_lite/controllers/themeController.dart';
-//import 'package:social_lite/hive/hive_registrar.g.dart';
+import 'package:social_lite/hive/hive_registrar.g.dart';
 import 'package:social_lite/models/appSettings.dart';
 import 'package:social_lite/screens/loginScreen.dart';
 import 'package:social_lite/services/chatProvider.dart';
@@ -12,7 +12,7 @@ import 'package:social_lite/services/loginProvider.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
-  //Hive.registerAdapters();
+  Hive.registerAdapters();
   runApp(const MyApp());
 }
 
